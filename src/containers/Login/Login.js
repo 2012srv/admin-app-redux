@@ -59,9 +59,9 @@ const Login = (props) => {
                                     isValid={touched.email && !errors.email}
                                     isInvalid={!!errors.email}
                                 />
-                                {/* <Form.Control.Feedback type="invalid">
+                                <Form.Control.Feedback tooltip type="invalid">
                                     {errors.email}
-                                </Form.Control.Feedback> */}
+                                </Form.Control.Feedback>
                             </InputGroup>
 
                         </Form.Group>
@@ -80,9 +80,9 @@ const Login = (props) => {
                                     isInvalid={!!errors.password}
                                     isValid={touched.password && !errors.password}
                                 />
-                                {/* <Form.Control.Feedback type="invalid">
+                                <Form.Control.Feedback tooltip type="invalid">
                                     {errors.password}
-                                </Form.Control.Feedback> */}
+                                </Form.Control.Feedback>
                             </InputGroup>
                         </Form.Group>
                         {error && <p className='mb-0 pt-2 text-danger'>{error.msg}</p>}

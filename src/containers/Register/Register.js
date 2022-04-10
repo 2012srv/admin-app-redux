@@ -20,7 +20,7 @@ const Register = () => {
         phone: yup.number().required(),
         email: yup.string().email().required(),
         password: yup.string().required(),
-        passwordConfirmation: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match'),
+        passwordConfirmation: yup.string().required().oneOf([yup.ref('password'), null], 'Passwords must match'),
         terms: yup.bool().required().oneOf([true], "term must be accepted"),
     });
 
@@ -76,9 +76,9 @@ const Register = () => {
                                     isValid={touched.fullName && !errors.fullName}
                                     isInvalid={!!errors.fullName}
                                 />
-                                {/* <Form.Control.Feedback type="invalid">
+                                <Form.Control.Feedback tooltip type="invalid">
                                     {errors.fullName}
-                                </Form.Control.Feedback> */}
+                                </Form.Control.Feedback>
                             </InputGroup>
                         </Form.Group>
                         <Form.Group md="" controlId="validationFormik06" className="pt-2">
@@ -96,9 +96,9 @@ const Register = () => {
                                     isValid={touched.phone && !errors.phone}
                                     isInvalid={!!errors.phone}
                                 />
-                                {/* <Form.Control.Feedback type="invalid">
+                                <Form.Control.Feedback tooltip type="invalid">
                                     {errors.phone}
-                                </Form.Control.Feedback> */}
+                                </Form.Control.Feedback>
                             </InputGroup>
                         </Form.Group>
                         <Form.Group md="" controlId="validationFormik01" className="pt-2">
@@ -116,9 +116,9 @@ const Register = () => {
                                     isValid={touched.email && !errors.email}
                                     isInvalid={!!errors.email}
                                 />
-                                {/* <Form.Control.Feedback type="invalid">
+                                <Form.Control.Feedback tooltip type="invalid">
                                     {errors.email}
-                                </Form.Control.Feedback> */}
+                                </Form.Control.Feedback>
                             </InputGroup>
                         </Form.Group>
                         <Form.Group controlId="validationFormik02" className="pt-2">
@@ -136,9 +136,9 @@ const Register = () => {
                                     isInvalid={!!errors.password}
                                     isValid={touched.password && !errors.password}
                                 />
-                                {/* <Form.Control.Feedback type="invalid">
+                                <Form.Control.Feedback tooltip type="invalid">
                                     {errors.password}
-                                </Form.Control.Feedback> */}
+                                </Form.Control.Feedback>
                             </InputGroup>
                         </Form.Group>
                         <Form.Group controlId="validationFormik03" className="pt-2">
@@ -156,9 +156,9 @@ const Register = () => {
                                     isInvalid={!!errors.passwordConfirmation}
                                     isValid={touched.passwordConfirmation && !errors.passwordConfirmation}
                                 />
-                                {/* <Form.Control.Feedback type="invalid">
+                                <Form.Control.Feedback tooltip type="invalid">
                                     {errors.passwordConfirmation}
-                                </Form.Control.Feedback> */}
+                                </Form.Control.Feedback>
                             </InputGroup>
 
                         </Form.Group>
