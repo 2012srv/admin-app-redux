@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import InputGroup from 'react-bootstrap/InputGroup'
 import Button from 'react-bootstrap/Button';
@@ -9,19 +9,20 @@ import * as yup from 'yup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { axiosBase } from '../../hoc/withErrorHandler';
-import * as api from '../../context/authContext/apiCalls';
-import { AuthContext } from '../../context/authContext/AuthContext';
-import { Link } from 'react-router-dom';
+import * as api from '../../redux/apiCalls';
 
-// import withErrorHandler from '../../hoc/withErrorHandler';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Login = (props) => {
-    const { dispatch, error, isFetching } = useContext(AuthContext);
+    const { error, isFetching } = useSelector(state => state.auth);
+    const dispatch = useDispatch();
+
     const schema = yup.object().shape({
         email: yup.string().email().required(),
-        password: yup.string().required(),
-        // terms: yup.bool().required().oneOf([true], "term must be accepted"),
+        password: yup.string().required()
     });
+
     useEffect(() => {
 
     }, []);

@@ -1,10 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 import classes from './Header.module.scss';
 import { axiosAuth } from '../../hoc/withErrorHandler';
 
-import * as api from '../../context/authContext/apiCalls';
-import { AuthContext } from '../../context/authContext/AuthContext';
+import * as api from '../../redux/apiCalls';
 
 import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -12,8 +11,12 @@ import Modal from 'react-bootstrap/Modal';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 const Header = (props) => {
-    const { dispatch, user } = useContext(AuthContext);
+    const { user } = useSelector(state => state.auth);
+    const dispatch = useDispatch();
+
     const [modalshow, setModalShow] = useState(false);
 
     const assignedClasses = [classes.Header, 'd-flex', 'justify-content-between', 'px-3'];

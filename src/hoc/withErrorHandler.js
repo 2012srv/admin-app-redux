@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useContext, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-import { AuthContext } from '../context/authContext/AuthContext';
-import { logOut } from "../context/authContext/AuthActions";
-
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
+
+import { logOut } from "../redux/authSlice";
+import { useDispatch, useSelector } from 'react-redux';
 
 export const axiosBase = axios.create({
     baseURL: process.env.REACT_APP_BASE_URL
@@ -20,7 +20,9 @@ export const axiosAuth = axios.create({
 export const withErrorHandler = (WrappedComponent) => {
     return props => {
         const [error, setError] = useState(null);
-        const { dispatch, user } = useContext(AuthContext);
+
+        const { user } = useSelector(state => state.auth);
+        const dispatch = useDispatch();
 
         const reqInterceptor = axiosAuth.interceptors.request.use(
             async (req) => {
@@ -71,8 +73,6 @@ export const withErrorHandler = (WrappedComponent) => {
         const errorConfirmedHandler = () => {
             if (error.status === 403) {
                 setError(null);
-                localStorage.removeItem('token');
-                localStorage.removeItem('refreshToken');
                 dispatch(logOut());
             } else {
                 setError(null);

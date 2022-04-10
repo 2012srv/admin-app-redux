@@ -1,4 +1,4 @@
-import { loginFailure, loginStart, loginSuccess, logOut, changeTheme } from "./AuthActions";
+import { loginFailure, loginStart, loginSuccess, logOut, themeChange } from "./authSlice";
 
 export const login = async (user, dispatch, axios) => {
     dispatch(loginStart());
@@ -18,21 +18,11 @@ export const logOff = async (dispatch, axios) => {
     dispatch(logOut());
     try {
         await axios.post("auth/logout", { token: refreshToken });
-        localStorage.removeItem('token');
-        localStorage.removeItem('refreshToken');
-        // console.log(err);
     } catch (err) {
-        localStorage.removeItem('token');
-        localStorage.removeItem('refreshToken');
         console.log(err);
     }
 };
 
-export const themeChange = (theme, dispatch) => {
-    dispatch(changeTheme(theme));
-    // try {
-    //     const res = await axios.post("auth/logout", { token: user.token });
-    // } catch (err) {
-    //     console.log(err);
-    // }
+export const changeTheme = (theme, dispatch) => {
+    dispatch(themeChange(theme));
 };

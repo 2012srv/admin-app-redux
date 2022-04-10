@@ -1,9 +1,7 @@
-import React, { useContext, useEffect } from "react";
-import { AuthContext } from '../../context/authContext/AuthContext';
+import React, { useEffect } from "react";
 import { axiosAuth } from '../../hoc/withErrorHandler';
 
 const Dashboard = (props) => {
-    const { user } = useContext(AuthContext);
     console.log('dashboard');
 
     const fetchData = async () => {
