@@ -1,0 +1,13 @@
+@function getColor($color, $amount: 50, $opacity: 1) {    
+  $value: 50-$amount;
+  $result: '';
+  $opac:1 - $opacity;
+  @if $value > 0 {
+    $result: lighten($color, $value*2);
+  } @else if $value < 0 {
+    $result: darken($color, $value*-2);
+  } @else {
+    $result:$color
+  }  
+  @return transparentize($result, $opac);
+}

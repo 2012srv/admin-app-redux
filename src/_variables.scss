@@ -1,0 +1,14 @@
+$primary: #00ab55;
+$accent: #AB0056;
+
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+
+$custom-theme-colors: ("primary": $primary);
+
+$menu_wide: 210px;
+$menu_short: 60px;
+
+$header: 50px;
+
+$theme-colors: map-merge($theme-colors, $custom-theme-colors);

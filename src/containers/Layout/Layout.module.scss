@@ -1,0 +1,14 @@
+@import '../../_variables';
+@import '../../_mixins';
+
+.Main {
+    padding-top: $header;
+    transition: all 0.2s linear;
+    padding-left: $menu_wide;
+    /* background-color: #f7f7f7; */
+    min-height: 100vh;
+
+    &.Collapsed {
+        padding-left: $menu_short;
+    }
+}
